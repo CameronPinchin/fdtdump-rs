@@ -18,7 +18,7 @@ fn main() {
     //	dbg!(args); // quick print of args
 	
 	match args_count {
-		
+		1 => parser::parse_args(&args[1]),		
 		0 => parser::show_help(),
 		_ => println!("err, no input on args_count(?)"),
 	}
