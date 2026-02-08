@@ -7,7 +7,8 @@
 
 use std::env; // returns an iterator of the command line arguments  
 
-const DBT_EXTENSION: ".dbt";
+const DBT_EXTENSION: &str =  ".dbt";
+const TEST_PATH_EXTENSION: &str = "/home/cameronpinchin/Desktop/rust/fdtdumprs/test.dbt";
 
 /* @brief Input a file path string and determines if it  
  * is a valid .dtb file.
@@ -17,16 +18,29 @@ const DBT_EXTENSION: ".dbt";
  * @return Returns a boolean depending on if the file 
  * ends in .dtb or not.
  */
-fn is_dtb_file( str&: file_path ) -> bool {
-	let target = '.';
-    let last_dot_pos = file_path.rfind(&target);
+fn is_dtb_file( file_path: &str ) -> bool {
 	
-    if last_dot_pos == None { return false; }
+	let target = '.';
+    let mut last_dot_pos = 0;
+
+	match file_path.rfind(target) {
+		Some(index) => {
+			last_dot_pos = index;
+		},
+		None => {
+			return false;
+		}
+	}
 		
-	let file_path_extension = safe_slice(file_path, last_dot_pos - 1); // incude the '.'
+	let file_path_extension = safe_slice(file_path, last_dot_pos);
+    
+	if file_path_extension == DBT_EXTENSION {
+		println!("TRUE");
+	} else {
+		println!("FALSE: {}, {}", file_path_extension, DBT_EXTENSION);
+	}
 
 	return file_path_extension == DBT_EXTENSION; 	
-
 }
 
 
@@ -38,7 +52,7 @@ fn is_dtb_file( str&: file_path ) -> bool {
  *
  * @return str& A reference to the modified string. 
  */
-fn safe_slice( str&: file_path, usize: n ) -> &str {
+fn safe_slice( file_path: &str, n: usize ) -> &str {
 	match file_path.char_indices().nth(n) {
 		Some((byte_index, _)) => {
 			&file_path[byte_index..]
@@ -50,7 +64,8 @@ fn safe_slice( str&: file_path, usize: n ) -> &str {
 
 fn main() {
 	let args: Vec<String> = env::args().collect();
-	dbg!(args) // quick print of args 
-
+	dbg!(args); // quick print of args
+	
+	is_dtb_file(TEST_PATH_EXTENSION);
 }
 
