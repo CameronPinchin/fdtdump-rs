@@ -45,8 +45,7 @@ pub fn parse_args( arg: &str ) {
 		_ARG_HELP_SHORT    => show_help(),
 		_ARG_HELP_LONG     => show_help(),
 		_ 				   => {
-								println!("Error, invalid input. ");
-								show_help();
+								println!("Error, invalid input. Try '-h, --help' for help. ");
 								},
 	}
 
