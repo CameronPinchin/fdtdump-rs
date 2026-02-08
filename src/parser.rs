@@ -5,6 +5,8 @@
  *
  */
 
+use crate::error;
+
 const VERSION: &str = "0.10";
 
 const _ARG_VERSION_LONG:  &str = "--version";
@@ -16,6 +18,11 @@ const _ARG_VERSION_SHORT: &str = "-V";
 const _ARG_HELP_SHORT:    &str = "-h";
 const _ARG_SCAN_SHORT:    &str = "-s";
 const _ARG_DEBUG_SHORT:   &str = "-d";
+
+pub fn show_error(){
+	println!("ERROR: Invalid input, use one argument at a time.\n");
+	show_help();
+}
 
 pub fn show_help(){
     println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
