@@ -7,8 +7,8 @@
 
 use std::env; // returns an iterator of the command line arguments  
 
-const DBT_EXTENSION: &str =  ".dbt";
-const TEST_PATH_EXTENSION: &str = "/home/cameronpinchin/Desktop/rust/fdtdumprs/test.dbt";
+const DTB_EXTENSION: &str =  ".dtb";
+const TEST_PATH_EXTENSION: &str = "testfile.dtb";
 
 /* @brief Input a file path string and determines if it  
  * is a valid .dtb file.
@@ -34,13 +34,13 @@ fn is_dtb_file( file_path: &str ) -> bool {
 		
 	let file_path_extension = safe_slice(file_path, last_dot_pos);
     
-	if file_path_extension == DBT_EXTENSION {
+	if file_path_extension == DTB_EXTENSION {
 		println!("TRUE");
 	} else {
-		println!("FALSE: {}, {}", file_path_extension, DBT_EXTENSION);
+		println!("FALSE: {}, {}", file_path_extension, DTB_EXTENSION);
 	}
 
-	return file_path_extension == DBT_EXTENSION; 	
+	return file_path_extension == DTB_EXTENSION; 	
 }
 
 
