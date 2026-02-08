@@ -1,4 +1,9 @@
-use std::env; // returns an iterator of the command line arguments  
+ /* @author Cameron Pinchin
+  * 
+  * @date Feb 07 2026 
+  * 
+  * @brief Error checking for file-input - to be expanded 
+  */
 
 const DTB_EXTENSION: &str =  ".dtb";
 const TEST_PATH_EXTENSION: &str = "testfile.dtb";
@@ -27,12 +32,6 @@ fn is_dtb_file( file_path: &str ) -> bool {
 		
 	let file_path_extension = safe_slice(file_path, last_dot_pos);
     
-	if file_path_extension == DTB_EXTENSION {
-		println!("TRUE");
-	} else {
-		println!("FALSE: {}, {}", file_path_extension, DTB_EXTENSION);
-	}
-
 	return file_path_extension == DTB_EXTENSION; 	
 }
 

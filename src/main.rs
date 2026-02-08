@@ -8,13 +8,21 @@
 use std::env; // returns an iterator of the command line arguments  
 
 mod err_handling;
+mod parser;
 
 const TEST_PATH_EXTENSION: &str = "testfile.dtb";
 
 fn main() {
 	let args: Vec<String> = env::args().collect();
-	dbg!(args); // quick print of args
+	let args_count = env::args().skip(1).count();
+    //	dbg!(args); // quick print of args
 	
+	match args_count {
+		0 => parser::show_help(),
+		_ => println!("err, no input on args_count(?)"),
+	}
+
 	err_handling::ValidFileCheck(TEST_PATH_EXTENSION);
+
 }
 
