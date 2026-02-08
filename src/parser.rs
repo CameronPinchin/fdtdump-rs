@@ -5,6 +5,7 @@
  *
  */
 
+const VERSION: &str = "0.10";
 
 pub fn show_help(){
     println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
@@ -16,6 +17,15 @@ pub fn show_help(){
 	println!("  -s, --scan      Scan for an embedded fdt in file");
 	println!("  -h, --help      Print this help and exit");
 	println!(   "-V, --version  Print version and exit");
+}
+
+
+pub fn show_version(){
+	println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
+	println!("***** If you want to decompile a dtb, you probably want to use dtc");
+	println!("****      dtc -I dtb -O dts <filename>");
+	
+   println!("Version: {} ", VERSION);
 }
 
 
