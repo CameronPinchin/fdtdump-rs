@@ -5,7 +5,7 @@
  *
  */
 
-use crate::error;
+//use crate::error;
 
 const VERSION: &str = "0.10";
 
@@ -36,24 +36,40 @@ pub fn show_help(){
 	println!(   "-V, --version  Print version and exit");
 }
 
+pub fn show_scan(){
+    println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
+	println!("***** If you want to decompile a dtb, you probably want to use dtc");
+	println!("****      dtc -I dtb -O dts <filename>");
+    println!("\n\nTO-BE-IMPLEMENTED:\n");
+    println!("  -s, --scan      Scan for an embedded fdt in file [in-progress...]");
+}
+
+pub fn show_debug(){
+    println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
+	println!("***** If you want to decompile a dtb, you probably want to use dtc");
+	println!("****      dtc -I dtb -O dts <filename>");
+    println!("\n\nTO-BE-IMPLEMENTED:\n");
+    println!("  -d, --debug     Dump debug information while decoding the file [to-be-implemented]");
+}
 
 pub fn show_version(){
 	println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
 	println!("****      dtc -I dtb -O dts <filename>");
-	
    	println!("Version: {} ", VERSION);
 }
 
 pub fn parse_args( arg: &str ) {	
 	match arg {
-		_ARG_VERSION_SHORT => show_version(),
-		_ARG_VERSION_LONG  => show_version(),
-		_ARG_HELP_SHORT    => show_help(),
-		_ARG_HELP_LONG     => show_help(),
-		_ 				   => {
-								println!("Error, invalid input. Try '-h, --help' for help. ");
-								},
+		_ARG_VERSION_SHORT  => show_version(),
+		_ARG_VERSION_LONG   => show_version(),
+		_ARG_HELP_SHORT     => show_help(),
+		_ARG_HELP_LONG      => show_help(),
+        _ARG_DEBUG_SHORT    => show_debug(),
+        _ARG_DEBUG_LONG     => show_debug(),
+        _ARG_SCAN_SHORT     => show_scan(),
+        _ARG_SCAN_LONG      => show_scan(),
+		_ 				    => { println!("Error, invalid input. Try '-h, --help' for help. "); },
 	}
 
 }
