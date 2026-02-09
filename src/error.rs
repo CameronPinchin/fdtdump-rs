@@ -53,6 +53,13 @@ fn safe_slice( file_path: &str, n: usize ) -> &str {
 	} 
 }
 
+
+/* @brief Public facing function for other modules to use.
+ *
+ * @param file_path: &str is a file path input.
+ * 
+ * @return Returns a boolean depending on if it is a .dtb file.
+ */
 pub fn ValidFileCheck( file_path: &str ) -> bool {
 	return is_dtb_file(file_path);
 }
