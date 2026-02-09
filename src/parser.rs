@@ -25,7 +25,7 @@ pub fn show_error(){
 }
 
 pub fn show_help(){
-    println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
+    println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
 	println!("****      dtc -I dtb -O dts <filename>");
 	println!("\nUsage:fdtdump [options..[in progres]] <filename>\n");
@@ -37,7 +37,7 @@ pub fn show_help(){
 }
 
 pub fn show_scan(){
-    println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
+    println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
 	println!("****      dtc -I dtb -O dts <filename>");
     println!("\n\nTO-BE-IMPLEMENTED:\n");
@@ -45,7 +45,7 @@ pub fn show_scan(){
 }
 
 pub fn show_debug(){
-    println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
+    println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
 	println!("****      dtc -I dtb -O dts <filename>");
     println!("\n\nTO-BE-IMPLEMENTED:\n");
@@ -53,7 +53,7 @@ pub fn show_debug(){
 }
 
 pub fn show_version(){
-	println!("***** fdtdump-rs is a low-ldevel debugging tool, based on fdtdump, but ported for rust.");
+	println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
 	println!("****      dtc -I dtb -O dts <filename>");
    	println!("Version: {} ", VERSION);
