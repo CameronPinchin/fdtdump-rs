@@ -98,7 +98,7 @@ pub fn parse_args( arg: &str ) {
         _ARG_DEBUG_LONG     => show_debug(),
         _ARG_SCAN_SHORT     => show_scan(),
         _ARG_SCAN_LONG      => show_scan(),
-		_ 				    => { if error::ValidFileCheck(arg) == True {
+		_ 				    => { if error::ValidFileCheck(arg) == true {
 									println!("TRUE: valid-dbt-file");
 								} else {
 									println!("FALSE: valid-dbt-file");
