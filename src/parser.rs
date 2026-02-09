@@ -5,9 +5,9 @@
  *
  */
 
-//use crate::error;
+use crate::error;
 
-const VERSION: &str = "0.10";
+const VERSION: &str = "0.01";
 
 const _ARG_VERSION_LONG:  &str = "--version";
 const _ARG_HELP_LONG:     &str = "--help";
@@ -19,11 +19,20 @@ const _ARG_HELP_SHORT:    &str = "-h";
 const _ARG_SCAN_SHORT:    &str = "-s";
 const _ARG_DEBUG_SHORT:   &str = "-d";
 
+
+/* @brief Show error log to user when too many arguments are inputted.  
+ *
+ * @return Returns () 
+ */
 pub fn show_error(){
 	println!("ERROR: Invalid input, use one argument at a time.\n");
 	show_help();
 }
 
+/* @brief Shows help message output when user inputs any of '-h, --help'
+ * 
+ * @return Returns () 
+ */
 pub fn show_help(){
     println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
@@ -36,6 +45,11 @@ pub fn show_help(){
 	println!(   "-V, --version  Print version and exit");
 }
 
+/* @brief Shows scan message output when user inputs any of '-s, --scan'.
+ * To be implemented further. 
+ *
+ * @return Returns () 
+ */
 pub fn show_scan(){
     println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
@@ -44,6 +58,11 @@ pub fn show_scan(){
     println!("  -s, --scan      Scan for an embedded fdt in file [in-progress...]");
 }
 
+/* @brief Show debug message output when user inputs any of '-d, --debug'.
+ * To be implemented further. 
+ *
+ * @return Returns () 
+ */
 pub fn show_debug(){
     println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
@@ -52,6 +71,10 @@ pub fn show_debug(){
     println!("  -d, --debug     Dump debug information while decoding the file [to-be-implemented]");
 }
 
+/* @brief Show version message output when user inputs any of '-v, --version'.  
+ *
+ * @return Returns () 
+ */
 pub fn show_version(){
 	println!("***** fdtdump-rs is a low-level debugging tool, based on fdtdump, but ported for rust.");
 	println!("***** If you want to decompile a dtb, you probably want to use dtc");
@@ -59,6 +82,12 @@ pub fn show_version(){
    	println!("Version: {} ", VERSION);
 }
 
+/* @brief Parses the argument inpuuted by the user.  
+ *
+ * @param str&: arg is the user argument provided in main.rs.
+ *
+ * @return Returns cases when arg can be matched.  
+ */
 pub fn parse_args( arg: &str ) {	
 	match arg {
 		_ARG_VERSION_SHORT  => show_version(),
@@ -69,9 +98,13 @@ pub fn parse_args( arg: &str ) {
         _ARG_DEBUG_LONG     => show_debug(),
         _ARG_SCAN_SHORT     => show_scan(),
         _ARG_SCAN_LONG      => show_scan(),
-		_ 				    => { println!("Error, invalid input. Try '-h, --help' for help. "); },
+		_ 				    => { if error::ValidFileCheck(arg) == True {
+									println!("TRUE: valid-dbt-file");
+								} else {
+									println!("FALSE: valid-dbt-file");
+								}
+								},
 	}
-
 }
 
 
