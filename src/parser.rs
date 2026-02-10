@@ -98,13 +98,38 @@ pub fn parse_args( arg: &str ) {
         _ARG_DEBUG_LONG     => show_debug(),
         _ARG_SCAN_SHORT     => show_scan(),
         _ARG_SCAN_LONG      => show_scan(),
-		_ 				    => { if error::ValidFileCheck(arg) == true {
+		_ 				    => { if error::valid_file_check(arg) == true {
 									println!("TRUE: valid-dbt-file");
 								} else {
 									println!("FALSE: valid-dbt-file");
 								}
 								},
 	}
+}
+
+fn is_valid_arg( arg: &str ) -> bool {
+	match arg {
+		_ARG_VERSION_SHORT  => true,
+		_ARG_VERSION_LONG   => true,
+		_ARG_HELP_SHORT     => true,
+		_ARG_HELP_LONG      => true,
+        _ARG_DEBUG_SHORT    => true,
+        _ARG_DEBUG_LONG     => true,
+        _ARG_SCAN_SHORT     => true,
+        _ARG_SCAN_LONG      => true,
+		_					=> valid_file_check(arg),
+	}
+}
+
+pub fn two_argument_parse( arg_0: &str, arg_1: &str ) -> &str  {
+	let mut arg = "";
+	if is_valid_arg(&args[1]) && is_valid_arg(&args[2]) {
+		arg = &args[1] + &args[2];
+	} else {
+		parser::show_error();
+		return None;
+	}
+	return arg;
 }
 
 

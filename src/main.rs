@@ -21,16 +21,12 @@ const TEST_PATH_EXTENSION: &str = "testfile.dtb";
 fn main() {
 	let args: Vec<String> = env::args().collect();
 	let args_count = env::args().skip(1).count();
-    //	dbg!(args); // quick print of args
-    	
+    //	dbg!(args); 
 	match args_count {
-		2 => error::two_argument_parse( &args[1], &args[2] ),
+		2 => parser::two_argument_parse( &args[1], &args[2] ),
 		1 => parser::parse_args(&args[1]),		
 		0 => parser::show_help(),
 		_ => println!("err, no input on args_count(?)"),
 	}
-
-	error::valid_file_check(TEST_PATH_EXTENSION);
-
 }
 
