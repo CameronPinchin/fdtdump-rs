@@ -60,8 +60,20 @@ fn safe_slice( file_path: &str, n: usize ) -> &str {
  * 
  * @return Returns a boolean depending on if it is a .dtb file.
  */
-pub fn ValidFileCheck( file_path: &str ) -> bool {
+pub fn valid_file_check( file_path: &str ) -> bool {
 	return is_dtb_file(file_path);
+}
+
+pub fn two_argument_parse( arg_0: &str, arg_1: &str ) -> &str  {
+	let mut arg = "";
+	if parser::is_valid_arg(&args[1]) && parser::is_valid_arg(&args[2]) {
+		arg = &args[1] + &args[2];
+	} else {
+		parser::show_error();
+		return None;
+	}
+
+	return arg;
 }
 
 

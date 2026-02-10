@@ -12,18 +12,6 @@ mod parser;
 
 const TEST_PATH_EXTENSION: &str = "testfile.dtb";
 
-fn two_argument_parse( arg_0: &str, arg_1: &str ) -> &str  {
-	let mut arg = "";
-	if parser::is_valid_arg(&args[1]) && parser::is_valid_arg(&args[2]) {
-		arg = &args[1] + &args[2];
-	} else {
-		parser::show_error();
-		return None;
-	}
-
-	return arg;
-}
-
 /* === TO - DO ===
  *  - 2-argument case: 
  *       - arg_1: match one of options defined in parser
@@ -36,13 +24,13 @@ fn main() {
     //	dbg!(args); // quick print of args
     	
 	match args_count {
-		2 => two_argument_parse( &args[1], &args[2] ),
+		2 => error::two_argument_parse( &args[1], &args[2] ),
 		1 => parser::parse_args(&args[1]),		
 		0 => parser::show_help(),
 		_ => println!("err, no input on args_count(?)"),
 	}
 
-	error::ValidFileCheck(TEST_PATH_EXTENSION);
+	error::valid_file_check(TEST_PATH_EXTENSION);
 
 }
 
