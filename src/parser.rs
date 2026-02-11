@@ -126,7 +126,7 @@ pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
 		let arg = arg_0.to_string() + arg_1;
 		println!("argument: {}", arg);
 	} else {
-		parser::show_error();
+		show_error();
 	}
 }
 
