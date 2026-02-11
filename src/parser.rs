@@ -122,14 +122,12 @@ fn is_valid_arg( arg: &str ) -> bool {
 }
 
 pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
-	let mut arg = "";
 	if is_valid_arg(arg_0) && is_valid_arg(arg_1) {
 		let arg = arg_0.to_string() + arg_1;
-		return arg;
+		println!("argument: {}", arg);
 	} else {
 		parser::show_error();
 	}
-	println!("argument: {}", arg);
 }
 
 
