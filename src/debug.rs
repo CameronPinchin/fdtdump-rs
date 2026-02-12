@@ -5,12 +5,14 @@
  */
 
 use fdt::Fdt;
+use std::env; 
 
 use crate::error;
 
 pub fn dump_blob( file: &str ) {
+
    let test_file = error::TEST_PATH_EXTENSION.to_string();
-   static MY_FDT: &[u8] = include_bytes!("/home/cameronpinchin/workspace/rust/fdtdump-rs/_test/testfile.dtb");
+   static MY_FDT: &[u8] = include_bytes!( concat!(env!("CARGO_MANIFEST_DIR"), "/_test/testfile.dtb") );
 
     let fdt = Fdt::new(MY_FDT).unwrap();
     println!("This is a device tree representation of a {}:", fdt.root().model());
