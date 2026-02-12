@@ -6,6 +6,7 @@
  */
 
 use crate::error;
+use crate::debug;
 
 const VERSION: &str = "0.01";
 
@@ -121,7 +122,26 @@ fn is_valid_arg( arg: &str ) -> bool {
 	}
 }
 
+fn parse_arg_one( arg_0: &str ) {
+	match arg {
+		_ARG_VERSION_SHORT  => None,
+		_ARG_VERSION_LONG   => None,
+		_ARG_HELP_SHORT     => None,
+		_ARG_HELP_LONG      => None,
+        _ARG_DEBUG_SHORT    => true,
+        _ARG_DEBUG_LONG     => true,
+        _ARG_SCAN_SHORT     => None,
+        _ARG_SCAN_LONG      => None,,
+		_					=> error::valid_file_check(arg),
+	}
+}
+
+/*
 fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
+	/*
+	  Maybe dont concatenate the arguments, just match based on argument one
+	
+	*/
 	if is_valid_arg(arg_0) && is_valid_arg(arg_1) {
 		let arg = arg_0.to_string() + "," + arg_1;
         return arg;
@@ -130,10 +150,20 @@ fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
         String::new()
 	}
 }
+*/
 
-pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
-    let arg = two_arg_parse( arg_0, arg_1 );
-    println!("argument: {}", arg);
+pub two_argument_parse( arg_0: &str, arg_1: &str ) {
+	match arg_0 {
+		_ARG_VERSION_SHORT  => None,
+		_ARG_VERSION_LONG   => None,
+		_ARG_HELP_SHORT     => None,
+		_ARG_HELP_LONG      => None,
+        _ARG_DEBUG_SHORT    => debug::dump_blob(arg_1),
+        _ARG_DEBUG_LONG     => debug::dump_blob(arg_1),
+        _ARG_SCAN_SHORT     => None,
+        _ARG_SCAN_LONG      => None,,
+		_					=> error::valid_file_check(arg),
+	}
 }
 
 
