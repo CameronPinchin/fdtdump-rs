@@ -18,7 +18,7 @@ pub fn dump_blob( file: &str ) {
     println!("...which has {} CPUs", fdt.cpus().count());
     println!(
       "...and has atleast one memory location at: {:#X}\n",
-      fdt.memory.regions().next().unwrap().starting_address as usize
+      fdt.memory().regions().next().unwrap().starting_address as usize
    );
 
    let chosen = fdt.chosen();
