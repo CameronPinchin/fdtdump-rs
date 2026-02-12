@@ -8,7 +8,7 @@ use::fdt;
 
 use crate::error;
 
-pub fn dump_blob( &str file ) {
+pub fn dump_blob( file: &str ) {
     let fdt = Fdt::new(error::TEST_PATH_EXTENSION).unwrap();
     println!("This is a device tree representation of a {}:", fdt.root().model());
     println!("...which is compatible with atleast: {}", fdt.root().compatible().first());
