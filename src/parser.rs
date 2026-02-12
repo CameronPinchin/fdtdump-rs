@@ -140,14 +140,14 @@ fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
 
 pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
 	match arg_0 {
-		_ARG_VERSION_SHORT  => _,
-		_ARG_VERSION_LONG   => _,
-		_ARG_HELP_SHORT     => _,
-		_ARG_HELP_LONG      => _,
+		_ARG_VERSION_SHORT  => show_error(),
+		_ARG_VERSION_LONG   => show_error(),
+		_ARG_HELP_SHORT     => show_error(),
+		_ARG_HELP_LONG      => show_error(),
         _ARG_DEBUG_SHORT    => debug::dump_blob(arg_1),
         _ARG_DEBUG_LONG     => debug::dump_blob(arg_1),
-        _ARG_SCAN_SHORT     => _,
-        _ARG_SCAN_LONG      => _,
+        _ARG_SCAN_SHORT     => show_error(),
+        _ARG_SCAN_LONG      => show_error(),
 		_					=> error::valid_file_check(arg),
 	}
 }
