@@ -9,8 +9,8 @@ use fdt::Fdt;
 use crate::error;
 
 pub fn dump_blob( file: &str ) {
-
-   static MY_FDT: &[u8] = include_bytes!(error::TEST_PATH_EXTENSION);
+   let test_file = error::TEST_PATH_EXTENSION.to_string();
+   static MY_FDT: &[u8] = include_bytes!(test_file);
 
     let fdt = Fdt::new(MY_FDT).unwrap();
     println!("This is a device tree representation of a {}:", fdt.root().model());
