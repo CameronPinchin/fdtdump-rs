@@ -9,6 +9,7 @@ use std::env; // returns an iterator of the command line arguments
 
 mod error;
 mod parser;
+mod debug;
 
 const TEST_PATH_EXTENSION: &str = "testfile.dtb";
 

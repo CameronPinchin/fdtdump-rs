@@ -20,7 +20,6 @@ const _ARG_HELP_SHORT:    &str = "-h";
 const _ARG_SCAN_SHORT:    &str = "-s";
 const _ARG_DEBUG_SHORT:   &str = "-d";
 
-
 /* @brief Show error log to user when too many arguments are inputted.  
  *
  * @return Returns () 
@@ -148,7 +147,7 @@ pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
         _ARG_DEBUG_LONG     => debug::dump_blob(arg_1),
         _ARG_SCAN_SHORT     => show_error(),
         _ARG_SCAN_LONG      => show_error(),
-		_					=> error::valid_file_check(arg),
+		_					=> error::valid_file_check(arg_1),
 	}
 }
 
