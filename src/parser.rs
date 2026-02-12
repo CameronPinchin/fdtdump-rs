@@ -138,7 +138,7 @@ fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
 }
 */
 
-pub two_argument_parse( arg_0: &str, arg_1: &str ) {
+pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
 	match arg_0 {
 		_ARG_VERSION_SHORT  => _,
 		_ARG_VERSION_LONG   => _,
