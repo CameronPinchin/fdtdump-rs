@@ -6,7 +6,7 @@
   */
 
 const DTB_EXTENSION: &str =  ".dtb";
-pub const TEST_PATH_EXTENSION: String = "/home/cameronpinchin/workspace/rust/fdtdump-rs/_test/testfile.dtb";
+pub const TEST_PATH_EXTENSION: &str = "/home/cameronpinchin/workspace/rust/fdtdump-rs/_test/testfile.dtb";
 
 /* @brief Input a file path string and determines if it  
  * is a valid .dtb file.
