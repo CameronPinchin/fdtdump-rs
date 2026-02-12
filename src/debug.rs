@@ -4,7 +4,7 @@
  * May include helper methods.
  */
 
-use::fdt;
+use fdt::Fdt;
 
 use crate::error;
 
