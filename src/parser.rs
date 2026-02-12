@@ -122,20 +122,6 @@ fn is_valid_arg( arg: &str ) -> bool {
 	}
 }
 
-fn parse_arg_one( arg_0: &str ) {
-	match arg {
-		_ARG_VERSION_SHORT  => None,
-		_ARG_VERSION_LONG   => None,
-		_ARG_HELP_SHORT     => None,
-		_ARG_HELP_LONG      => None,
-        _ARG_DEBUG_SHORT    => true,
-        _ARG_DEBUG_LONG     => true,
-        _ARG_SCAN_SHORT     => None,
-        _ARG_SCAN_LONG      => None,
-		_					=> error::valid_file_check(arg),
-	}
-}
-
 /*
 fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
 	/*
@@ -154,14 +140,14 @@ fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
 
 pub two_argument_parse( arg_0: &str, arg_1: &str ) {
 	match arg_0 {
-		_ARG_VERSION_SHORT  => None,
-		_ARG_VERSION_LONG   => None,
-		_ARG_HELP_SHORT     => None,
-		_ARG_HELP_LONG      => None,
+		_ARG_VERSION_SHORT  => _,
+		_ARG_VERSION_LONG   => _,
+		_ARG_HELP_SHORT     => _,
+		_ARG_HELP_LONG      => _,
         _ARG_DEBUG_SHORT    => debug::dump_blob(arg_1),
         _ARG_DEBUG_LONG     => debug::dump_blob(arg_1),
-        _ARG_SCAN_SHORT     => None,
-        _ARG_SCAN_LONG      => None,
+        _ARG_SCAN_SHORT     => _,
+        _ARG_SCAN_LONG      => _,
 		_					=> error::valid_file_check(arg),
 	}
 }
