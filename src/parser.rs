@@ -121,16 +121,20 @@ fn is_valid_arg( arg: &str ) -> bool {
 	}
 }
 
-pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
+fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
 	if is_valid_arg(arg_0) && is_valid_arg(arg_1) {
 		let arg = arg_0.to_string() + "," + arg_1;
-		println!("argument: {}", arg);
+        return arg;
 	} else {
 		show_error();
+        String::new()
 	}
 }
 
-
+pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
+    let arg = two_arg_parse( arg_0, arg_1 );
+    println!("argument: {}", arg);
+}
 
 
 
