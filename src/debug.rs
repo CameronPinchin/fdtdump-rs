@@ -9,7 +9,10 @@ use fdt::Fdt;
 use crate::error;
 
 pub fn dump_blob( file: &str ) {
-    let fdt = Fdt::new(error::TEST_PATH_EXTENSION).unwrap();
+
+   static MY_FDT: &[u8] = include_bytes!(error::TEST_PATH_EXTENSION);
+
+    let fdt = Fdt::new(MY_FDT).unwrap();
     println!("This is a device tree representation of a {}:", fdt.root().model());
     println!("...which is compatible with atleast: {}", fdt.root().compatible().first());
     println!("...which has {} CPUs", fdt.cpus().count());
