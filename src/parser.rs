@@ -131,7 +131,7 @@ fn parse_arg_one( arg_0: &str ) {
         _ARG_DEBUG_SHORT    => true,
         _ARG_DEBUG_LONG     => true,
         _ARG_SCAN_SHORT     => None,
-        _ARG_SCAN_LONG      => None,,
+        _ARG_SCAN_LONG      => None,
 		_					=> error::valid_file_check(arg),
 	}
 }
@@ -161,7 +161,7 @@ pub two_argument_parse( arg_0: &str, arg_1: &str ) {
         _ARG_DEBUG_SHORT    => debug::dump_blob(arg_1),
         _ARG_DEBUG_LONG     => debug::dump_blob(arg_1),
         _ARG_SCAN_SHORT     => None,
-        _ARG_SCAN_LONG      => None,,
+        _ARG_SCAN_LONG      => None,
 		_					=> error::valid_file_check(arg),
 	}
 }
