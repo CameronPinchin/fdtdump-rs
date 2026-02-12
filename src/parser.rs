@@ -147,7 +147,7 @@ pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
         _ARG_DEBUG_LONG     => debug::dump_blob(arg_1),
         _ARG_SCAN_SHORT     => show_error(),
         _ARG_SCAN_LONG      => show_error(),
-		_					=> error::valid_file_check(arg_1),
+		_					=> {println!("filler");},
 	}
 }
 
