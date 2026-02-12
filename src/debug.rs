@@ -6,7 +6,7 @@
 
 use::fdt;
 
-mod error;
+use crate::error;
 
 pub fn dump_blob( &str file ) {
     let fdt = Fdt::new(error::TEST_PATH_EXTENSION).unwrap();

@@ -5,8 +5,8 @@
  *
  */
 
-mod error;
-mod debug;
+use crate::error;
+use crate::debug;
 
 const VERSION: &str = "0.01";
 
