@@ -10,14 +10,6 @@ use std::fs;
 
 use crate::error;
 
-fn grab_file_directory() -> &str {
-   match env::current_dir() {
-      Ok(path) => return path,
-      Err(e) => eprintln!("Error getting working path: {}", e),
-
-   }
-}
-
 pub fn dump_blob_test( file: &str ) {
    let mut curr_path = env::current_dir().expect("Failed to get current working directory.");
    curr_path.push(file);
