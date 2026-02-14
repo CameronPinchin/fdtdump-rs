@@ -65,7 +65,6 @@ pub fn dump_blob_test( file: &str ) {
  * @return No return, on success prints out DTB file contents to console.
  */
 pub fn dump_blob( file: &str ) {
-   grab_file_directory();
    let test_file = error::TEST_PATH_EXTENSION.to_string();
    static MY_FDT: &[u8] = include_bytes!( concat!(env!("CARGO_MANIFEST_DIR"), "/_test/testfile.dtb") );
 
