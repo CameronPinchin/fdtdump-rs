@@ -41,4 +41,14 @@ pub fn dump_blob( file: &str ) {
       }
    }
 
+   println!("\nFind all nodes for '/':");
+   for node in fdt.find_all_nodes("/") {
+      println!("{}", node.name);
+   }
+
+   println!("Find all nodes for '/soc/virtio':");
+   for node in fdt.find_all_nodes("/soc/virtio") {
+      println!("{}", node.name);
+   }
+
  }
