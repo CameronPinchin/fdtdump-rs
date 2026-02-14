@@ -9,8 +9,22 @@ use std::env;
 
 use crate::error;
 
-pub fn dump_blob( file: &str ) {
+fn grab_file_directory() {
+   match env::current_dir() {
+      Ok(path) => println!("current working path: {}", path.display()),
+      Err(e) => eprintln!("Error getting working path: {}", e),
 
+   }
+}
+
+/* @brief Input a file path string to parse the dtb file  
+ *
+ * @param str&: file is a file path input leading to a dtb file
+ *
+ * @return No return, on success prints out DTB file contents to console.
+ */
+pub fn dump_blob( file: &str ) {
+   grab_file_directory();
    let test_file = error::TEST_PATH_EXTENSION.to_string();
    static MY_FDT: &[u8] = include_bytes!( concat!(env!("CARGO_MANIFEST_DIR"), "/_test/testfile.dtb") );
 
