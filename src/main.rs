@@ -5,7 +5,7 @@
  * @brief Variant of fdtdump but built in Rust 
  */
 
-use std::env; // returns an iterator of the command line arguments  
+use std::env; 
 
 mod error;
 mod parser;
@@ -16,7 +16,6 @@ const TEST_PATH_EXTENSION: &str = "testfile.dtb";
 fn main() {
 	let args: Vec<String> = env::args().collect();
 	let args_count = env::args().skip(1).count();
-    //	dbg!(args); 
 	match args_count {
 		2 => parser::two_argument_parse( &args[1], &args[2] ),
 		1 => parser::parse_args(&args[1]),		
