@@ -13,12 +13,6 @@ mod debug;
 
 const TEST_PATH_EXTENSION: &str = "testfile.dtb";
 
-/* === TO - DO ===
- *  - 2-argument case: 
- *       - arg_1: match one of options defined in parser
- *       - arg_2: pass dtb file verification checks, be a valid dtb file
- *  - filler 'show_error()' for the moment 
- */
 fn main() {
 	let args: Vec<String> = env::args().collect();
 	let args_count = env::args().skip(1).count();
