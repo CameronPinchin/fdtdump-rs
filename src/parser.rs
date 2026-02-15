@@ -107,36 +107,12 @@ pub fn parse_args( arg: &str ) {
 	}
 }
 
-fn is_valid_arg( arg: &str ) -> bool {
-	match arg {
-		_ARG_VERSION_SHORT  => true,
-		_ARG_VERSION_LONG   => true,
-		_ARG_HELP_SHORT     => true,
-		_ARG_HELP_LONG      => true,
-        _ARG_DEBUG_SHORT    => true,
-        _ARG_DEBUG_LONG     => true,
-        _ARG_SCAN_SHORT     => true,
-        _ARG_SCAN_LONG      => true,
-		_					=> error::valid_file_check(arg),
-	}
-}
-
-/*
-fn two_arg_parse( arg_0: &str, arg_1: &str ) -> String {
-	/*
-	  Maybe dont concatenate the arguments, just match based on argument one
-	
-	*/
-	if is_valid_arg(arg_0) && is_valid_arg(arg_1) {
-		let arg = arg_0.to_string() + "," + arg_1;
-        return arg;
-	} else {
-		show_error();
-        String::new()
-	}
-}
-*/
-
+/* @brief Parses the arguments inpuuted by the user.  
+ *
+ * @param arg_0: &str, arg_1: &str two string arguments passed by user.
+ *
+ * @return Returns cases when args can be matched.  
+ */
 pub fn two_argument_parse( arg_0: &str, arg_1: &str ) {
 	match arg_0 {
 		_ARG_VERSION_SHORT  => show_error(),
