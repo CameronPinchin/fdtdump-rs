@@ -8,56 +8,6 @@ use fdt::Fdt;
 use std::env; 
 use std::fs;
 
-use crate::error;
-
-pub fn dump_blob_test( file: &str ) {
-   let mut curr_path = env::current_dir().expect("Failed to get current working directory.");
-   curr_path.push(file);
-
-   let file_bytes = fs::read(&curr_path)
-      .expect(&format!("Could not find {} in your current directory.", curr_path.display()));
-
-   // static MY_FDT: &[u8] = include_bytes!( concat!(env!("CARGO_MANIFEST_DIR"), "/_test/testfile.dtb") );
-
-    let fdt = Fdt::new(&file_bytes).unwrap();
-    println!("This is a device tree representation of a {}:", fdt.root().model());
-    println!("...which is compatible with atleast: {}", fdt.root().compatible().first());
-    println!("...which has {} CPUs", fdt.cpus().count());
-    println!(
-      "...and has atleast one memory location at: {:#X}\n",
-      fdt.memory().regions().next().unwrap().starting_address as usize
-   );
-
-   let chosen = fdt.chosen();
-   if let Some(bootargs) = chosen.bootargs() {
-      println!("The bootargs are: {:?}", bootargs);
-   }
-
-   if let Some(stdout) = chosen.stdout() {
-      println!("It would write stdout to: {}", stdout.name);
-   }
-
-   let soc = fdt.find_node("/soc");
-   println!("Does it have a '/soc' node? {}", if soc.is_some() { "yes" } else { "no" });
-   if let Some(soc) = soc {
-      println!("...and it has the following children:");
-      for child in soc.children() {
-         println!("  {}", child.name);
-      }
-   }
-
-   println!("\nFind all nodes for '/':");
-   for node in fdt.find_all_nodes("/") {
-      println!("{}", node.name);
-   }
-
-   println!("Find all nodes for '/soc/virtio':");
-   for node in fdt.find_all_nodes("/soc/virtio") {
-      println!("{}", node.name);
-   }
-
- }
-
 /* @brief Input a file path string to parse the dtb file  
  *
  * @param str&: file is a file path input leading to a dtb file
@@ -65,10 +15,19 @@ pub fn dump_blob_test( file: &str ) {
  * @return No return, on success prints out DTB file contents to console.
  */
 pub fn dump_blob( file: &str ) {
-   let test_file = error::TEST_PATH_EXTENSION.to_string();
-   static MY_FDT: &[u8] = include_bytes!( concat!(env!("CARGO_MANIFEST_DIR"), "/_test/testfile.dtb") );
+   let mut curr_path = env::current_dir().expect("Failed to get current working directory.");
+   curr_path.push(file);
 
-    let fdt = Fdt::new(MY_FDT).unwrap();
+   let file_bytes = fs::read(&curr_path)
+      .expect(&format!("Could not find {} in your current directory.", curr_path.display()));
+
+   let fdt = match Fdt::new(&file_bytes) {
+      Ok(fdt) => fdt,
+      Err(e) => {
+                              eprintln!("Error, failed to parse FDT: {:?}", e);
+                              return;
+                           }
+    };
     println!("This is a device tree representation of a {}:", fdt.root().model());
     println!("...which is compatible with atleast: {}", fdt.root().compatible().first());
     println!("...which has {} CPUs", fdt.cpus().count());
@@ -81,7 +40,7 @@ pub fn dump_blob( file: &str ) {
    if let Some(bootargs) = chosen.bootargs() {
       println!("The bootargs are: {:?}", bootargs);
    }
-
+ 
    if let Some(stdout) = chosen.stdout() {
       println!("It would write stdout to: {}", stdout.name);
    }
